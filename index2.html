@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <script type="text/javascript">
+    
+    const options = ["rock", "paper", "scissors"];
+
+    function computerPlay(){
+      let random = options[Math.floor(Math.random() * 3)]; 
+      return random; 
+    }
+
+    function playRound(playerSelection, computerSelection){
+      if((playerSelection != "rock") && (playerSelection != "paper") && (playerSelection !="scissors")){
+        console.log("Please enter a valid option and try again!");
+      }
+      else if(playerSelection === computerSelection){
+        console.log("Draw");
+        return("Draw");
+      }
+      else if(playerSelection === "rock"){
+        switch(computerSelection){
+          case "scissors": console.log("Rock crushes scissors.");
+          return("Victory!");
+          case "paper":  console.log("Paper covers rock.");
+          return("You lost.");
+        }
+      }
+      else if(playerSelection === "paper"){
+        switch(computerSelection){
+          case "scissors": console.log("Scissors cuts paper.");
+          return("You lost.");
+          case "rock": console.log("Paper covers rock.") 
+          return("Victory!");
+        }
+      }
+      else if(playerSelection === "scissors"){
+        switch(computerSelection){
+          case "rock": console.log("Rock crushes scissors.");
+          return("You lost.");
+          case "paper": console.log("Scissors cuts paper."); 
+          return("Victory!");
+        }
+      }
+      }
+
+      function game(){
+
+        let playerScore = 0;
+        let computerScore = 0; 
+        let timesTied = 0;
+        for(i = 1; i < 6; i ++){
+          let playerSelection = prompt("Rock Paper or Scissors?").toLowerCase();
+          let computerSelection = computerPlay(); 
+          let roundResult = (playRound(playerSelection, computerSelection));
+          switch(roundResult){
+            case "Victory!": playerScore++; 
+            break;
+            case "You lost.": computerScore++; 
+            break;
+            case "Draw": timesTied++
+          }
+        }
+        if (playerScore < computerScore){
+          console.log("You lost.... Rounds Won: " + playerScore + " Rounds lost: " + computerScore + " Rounds: tied: " + timesTied);
+        }
+        else if(playerScore > computerScore){
+          console.log("You won!!!! Rounds Won: " + playerScore + " Rounds lost: " + computerScore + " Rounds: tied: " + timesTied);
+        }
+        else{
+          console.log("Its a draw! Rounds Won: " + playerScore + " Rounds lost: " + computerScore + " Rounds: tied: " + timesTied);
+        }
+        }
+      
+    
+  </script>
+
+</body>
+</html>
